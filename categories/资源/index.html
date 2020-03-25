@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">PicGo-jsDelivr-GitHub搭建免费cdn图床 | 转生 | 你在吗(⌒▽⌒)</title>
+  <title itemprop="name">Category: 资源 | 转生 | 你在吗(⌒▽⌒)</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -313,166 +313,105 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/timg2AEMC4NH.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/timg2AEMC4NH.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      PicGo-jsDelivr-GitHub搭建免费cdn图床</h1>
-      <p class="entry-census">
-        <span>
-          <a href="https://CCIT18101030214TPJ.github.io" target="_blank" rel="noopener">
-            <img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn@2.0/img/custom/avatar1.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="https://CCIT18101030214TPJ.github.io" target="_blank" rel="noopener">hyp</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-3-19<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img data-src="资源.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">资源.zh</h1>
+    <span class="cat-des">
+      <p>资源.en</p>
+    </span>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>CDN的全称是Content Delivery Network，即内容分发网络。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术</p>
-<h2 id="简绍"><a href="#简绍" class="headerlink" title="#简绍"></a>#简绍</h2><p>该过程有两部分组成第一部分是先搭建jsDelivr-Github，这个过程当然也可以上传图片，但每次上传图片，还要创建新的版本太麻烦了，具体操作看第一部分步骤，第二部分（PicGo-jsDelivr-GitHub）是在第一部分的基础上加了PinGo，通过PinGo上传图片或者复制外链就比较轻松。</p>
-<h2 id="第一部分（jsDelivr-Github）"><a href="#第一部分（jsDelivr-Github）" class="headerlink" title="#第一部分（jsDelivr-Github）"></a>#第一部分（jsDelivr-Github）</h2><h2 id="1-首先创建一个Github"><a href="#1-首先创建一个Github" class="headerlink" title="1.首先创建一个Github"></a>1.首先创建一个Github</h2><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/1.png" alt=""></p>
-<p>由于我创建过了名为CDN的仓库，在这里以CND代替。</p>
-<p><abbr title="Hyper Text Markup Language">注意：</abbr>仓库名不能重复创建</p>
-<h2 id="2-克隆Github仓库到本地"><a href="#2-克隆Github仓库到本地" class="headerlink" title="2.克隆Github仓库到本地"></a>2.克隆Github仓库到本地</h2><p>去Github仓库，复制<abbr title="Hyper Text Markup Language">仓库的ssh地址</abbr>。<br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/2.png" alt=""><br>在你本地博客目录中，执行以下命令：</p>
-<pre><code> | git clone 复制的仓库ssh地址</code></pre><h2 id="3-文件上传到Github仓库"><a href="#3-文件上传到Github仓库" class="headerlink" title="3.文件上传到Github仓库"></a>3.文件上传到Github仓库</h2><p>在你的本地博客目录里你会发现出现了新的名为CDN的文件夹，然后在CDN文件夹中鼠标右击点击Git Bash Here,执行一下命令：</p>
-<pre><code>| git status                    //查看状态
-| git add .                     //添加所有文件到暂存区  不要忘记后面那个.
-| git commit -m &#39;提交信息&#39;      //把文件提交到仓库（这个提交信息可以写你第几次提交）
-| git push                      //推送至远程仓库</code></pre><h2 id="4-发布版本"><a href="#4-发布版本" class="headerlink" title="4.发布版本"></a>4.发布版本</h2><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/3.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/4.png" alt=""></p>
-<p>这样就可以使用了，但每次有新图片上传时，要更新就是发布新版本，更新时就直接使用3,4步就行（第四步的版本号要进行修改）。</p>
-<blockquote>
-<p>由于上面是jsDelivr-Github方法每次更新，太过烦琐，下面是加上<abbr title="Hyper Text Markup Language">PinGo</abbr>更快速的方法</p>
-</blockquote>
-<h2 id="第二部分（PicGo-jsDelivr-GitHub）"><a href="#第二部分（PicGo-jsDelivr-GitHub）" class="headerlink" title="#第二部分（PicGo-jsDelivr-GitHub）"></a>#第二部分（PicGo-jsDelivr-GitHub）</h2><blockquote>
-<p>在第一部分的基础上进行</p>
-</blockquote>
-<h2 id="1-先下载PinGo"><a href="#1-先下载PinGo" class="headerlink" title="1.先下载PinGo"></a>1.先下载PinGo</h2><p>PinGo下载地址：<a href="https://github.com/Molunerfinn/picgo/releases" target="_blank" rel="noopener">https://github.com/Molunerfinn/picgo/releases</a></p>
-<h2 id="2-生成token"><a href="#2-生成token" class="headerlink" title="2.生成token"></a>2.生成token</h2><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/5.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/6.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/7.png" alt=""><br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/9.png" alt=""></p>
-<blockquote>
-<p>复制生成的<abbr title="Hyper Text Markup Language">token</abbr>，（注意勿要关闭网页这个token将不再出现）。</p>
-</blockquote>
-<h2 id="3-配置PinGo"><a href="#3-配置PinGo" class="headerlink" title="3.配置PinGo"></a>3.配置PinGo</h2><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/10.png" alt=""><br>设定自定义域名：</p>
-<pre><code>| https://cdn.jsdelivr.net/gh/CCIT18101030214/CDN/
-| https://cdn.jsdelivr.net/gh/用户名/仓库名/</code></pre><p>配置完就可以使用了。但要注意图床是任何人都能看到的，不要上传私密照片。</p>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="/images/donate/AliPayQA.jpg"></li>
-                <li class="wechat-code"><img src="/images/donate/WeChatQQA.png"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/03/23/%E5%B0%B1%E9%82%A3%E6%A0%B7%E5%90%A7/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/a817971b77cbeace9414222987081edfe1143e10.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/a817971b77cbeace9414222987081edfe1143e10.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                就那样吧</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/03/19/Win10+hexo/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/nightlight.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/cover/nightlight.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                Win10搭建Hexo</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "t7nucQXUGXYL5YWgStKxqYOr-gzGzoHsz",
-        appKey: "dgqdzx1Wx1hDeVNXGqt322Wr",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="https://CCIT18101030214TPJ.github.io" target="_blank" rel="noopener" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn@2.0/img/custom/avatar1.jpg" itemprop="image" alt="hyp" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="https://CCIT18101030214TPJ.github.io" target="_blank" itemprop="url" rel="author noopener">hyp</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/timg[4].jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+    自学网</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-3-24</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
 
+<!-- 
+  
+    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/timg[4].jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+    自学网</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-3-24</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
 
-
+ -->
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
