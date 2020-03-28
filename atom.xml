@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tpjun.top/"/>
-  <updated>2020-03-27T04:04:09.483Z</updated>
+  <updated>2020-03-27T07:43:50.120Z</updated>
   <id>http://www.tpjun.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.tpjun.top/2020/03/24/%E8%87%AA%E5%AD%A6%E7%BD%91/"/>
     <id>http://www.tpjun.top/2020/03/24/自学网/</id>
     <published>2020-03-24T14:16:01.000Z</published>
-    <updated>2020-03-27T04:04:09.483Z</updated>
+    <updated>2020-03-27T07:43:50.120Z</updated>
     
     <summary type="html">
     
@@ -57,15 +57,15 @@
   </entry>
   
   <entry>
-    <title>Hello-World</title>
-    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
-    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
+    <title>win10搭建Hexo——超详细</title>
+    <link href="http://www.tpjun.top/2020/03/19/Win10+hexo/"/>
+    <id>http://www.tpjun.top/2020/03/19/Win10+hexo/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-22T09:17:17.515Z</updated>
+    <updated>2020-03-28T12:48:49.277Z</updated>
     
     <summary type="html">
     
-      frist blog
+      Hexo搭建
     
     </summary>
     
@@ -97,15 +97,15 @@
   </entry>
   
   <entry>
-    <title>Win10搭建Hexo</title>
-    <link href="http://www.tpjun.top/2020/03/19/Win10+hexo/"/>
-    <id>http://www.tpjun.top/2020/03/19/Win10+hexo/</id>
+    <title>Hello-World</title>
+    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
+    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-22T09:16:37.211Z</updated>
+    <updated>2020-03-22T09:17:17.515Z</updated>
     
     <summary type="html">
     
-      Hexo搭建
+      frist blog
     
     </summary>
     
