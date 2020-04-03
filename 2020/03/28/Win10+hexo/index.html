@@ -371,8 +371,7 @@
 <p><strong>3.检查git是否安装成功</strong></p>
 <p>在CMD窗口（R+win输入cmd即可打开CMD窗口)输入指令：</p>
 <pre><code>git
-</code></pre><p>结果会显示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//gitdownphoto.png" alt></p>
+</code></pre><p>等待安装。</p>
 <p>到这里git就安装好了，这时会有一个Git Bash的命令工具（鼠标右击就会出现）。</p>
 <h3 id="Step-2：下载配置Nodejs"><a href="#Step-2：下载配置Nodejs" class="headerlink" title="#Step 2：下载配置Nodejs"></a>#Step 2：下载配置Nodejs</h3><p><strong>1.下载</strong></p>
 <p>进入<a href="https://nodejs.org/en/download/" title="nodejs" target="_blank" rel="noopener">nodejs</a>下载，根据自己的电脑选择32位或64位。<br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ截图20200322114635.png" alt></p>
@@ -390,8 +389,7 @@
 <p>在这个blog文件夹（你所创建的文件夹）下直接鼠标右键git bash打开，这个时候会有命令窗口弹出。或者（win+r）输入cmd，然后cd到你创建的blog文件夹。</p>
 <p>在窗口中输入：</p>
 <pre><code>npm install -g hexo-cli 
-</code></pre><p>然后等待安装，显示如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//anzhun.jpg" alt></p>
+</code></pre><p>然后等待安装，这个过程需要的等待，请耐心。</p>
 <p><strong>2.检验是否安装成功</strong></p>
 <p>在窗口中接着输入hexo -v来检验是否安装成功</p>
 <pre><code>hexo -v
@@ -402,9 +400,10 @@
 <p>在窗口中接着输入：</p>
 <pre><code>hexo init
 </code></pre><p>这个过程可能会比较慢，请耐心等待</p>
-<p>结果如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//4659c1cf49fae96bf23f13490f8072f9.jpg" alt></p>
-<p>表明初始化已成功。</p>
+<p>最后结果如下：</p>
+<pre><code>added 432 packages in 59.037s
+INFO Start blogging with Hexo!
+</code></pre><p>表明初始化已成功。</p>
 <p><strong>4.安装网址所需要的依赖插件</strong></p>
 <p>在窗口中接着输入：</p>
 <pre><code>npm install
@@ -462,8 +461,8 @@ git config user.email
 </code></pre><p>然后在执行如下命令生成秘钥和公钥:</p>
 <pre><code>ssh-keygen -t rsa -C &quot;youremail&quot;
 </code></pre><p>执行了这个命令会提示存储路径和密码以及确认密码，你连续按三次Enter就好</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200328174001.png" alt></p>
-<p>照着上面的存储路径打开<font color="red">id_rsa.pub</font>，将里面所有的内容全部复制出来。</p>
+<pre><code>Enter file in while to save the key(/C/Users/......)
+</code></pre><p>上面会有的存储路径打开<font color="red">id_rsa.pub</font>，将里面所有的内容全部复制出来。</p>
 <p><font color="red">注</font>:<font color="red">id_rsa</font>是你这台电脑的私人秘钥，不能给别人看的，<font color="red">id_rsa.pub</font>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200328173631.png" alt></p>
 <p><strong>2.添加到github</strong></p>
