@@ -462,7 +462,7 @@ git config user.email
 <pre><code>ssh-keygen -t rsa -C &quot;youremail&quot;
 </code></pre><p>执行了这个命令会提示存储路径和密码以及确认密码，你连续按三次Enter就好</p>
 <pre><code>Enter file in while to save the key(/C/Users/......)
-</code></pre><p>上面会有的存储路径打开<font color="red">id_rsa.pub</font>，将里面所有的内容全部复制出来。</p>
+</code></pre><p>执行命令时会有上面的代码，这就是你的存储路径，打开<font color="red">id_rsa.pub</font>，将里面所有的内容全部复制出来。</p>
 <p><font color="red">注</font>:<font color="red">id_rsa</font>是你这台电脑的私人秘钥，不能给别人看的，<font color="red">id_rsa.pub</font>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200328173631.png" alt></p>
 <p><strong>2.添加到github</strong></p>
