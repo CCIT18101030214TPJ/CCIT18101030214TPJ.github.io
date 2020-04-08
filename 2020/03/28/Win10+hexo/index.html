@@ -60,7 +60,7 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-    
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
 </head>
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -371,7 +371,7 @@
 <p><strong>3.检查git是否安装成功</strong></p>
 <p>在CMD窗口（R+win输入cmd即可打开CMD窗口)输入指令：</p>
 <pre><code>git
-</code></pre><p>等待安装。</p>
+</code></pre><p>等待。</p>
 <p>到这里git就安装好了，这时会有一个Git Bash的命令工具（鼠标右击就会出现）。</p>
 <h3 id="Step-2：下载配置Nodejs"><a href="#Step-2：下载配置Nodejs" class="headerlink" title="#Step 2：下载配置Nodejs"></a>#Step 2：下载配置Nodejs</h3><p><strong>1.下载</strong></p>
 <p>进入<a href="https://nodejs.org/en/download/" title="nodejs" target="_blank" rel="noopener">nodejs</a>下载，根据自己的电脑选择32位或64位。<br><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn//img/QQ截图20200322114635.png" alt></p>
@@ -389,7 +389,8 @@
 <p>在这个blog文件夹（你所创建的文件夹）下直接鼠标右键git bash打开，这个时候会有命令窗口弹出。或者（win+r）输入cmd，然后cd到你创建的blog文件夹。</p>
 <p>在窗口中输入：</p>
 <pre><code>npm install -g hexo-cli 
-</code></pre><p>然后等待安装，这个过程需要的等待，请耐心。</p>
+</code></pre><p>然后等待安装，过程如下，这个过程需要的等待，请耐心。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//timg.jpg" alt></p>
 <p><strong>2.检验是否安装成功</strong></p>
 <p>在窗口中接着输入hexo -v来检验是否安装成功</p>
 <pre><code>hexo -v
@@ -498,7 +499,7 @@ hexo d
 </code></pre>
 <p><font color="red">注</font>:输入hexo d时可能有时会跳出窗口要你输入username和password。</p>
 <p>这个时候在你的github仓库中你会发现会出现跟你博客根目录一样的文件，你的根目录上的文件已经部署到你的github仓库上了。</p>
-<p>打开浏览器，输入<font color="red">xxxx.github.io</font>，这里将请按照  你的github用户名.github.io 输入，就可以访问你的博客啦。</p>
+<p>打开浏览器，输入<font color="red">xxxx.github.io</font>，这里请按照  你的github用户名.github.io 输入，就可以访问你的博客啦。</p>
 <h3 id="Step7-发布文章"><a href="#Step7-发布文章" class="headerlink" title="#Step7.发布文章"></a>#Step7.发布文章</h3><blockquote>
 <p>概要</p>
 </blockquote>
@@ -631,7 +632,7 @@ hexo d
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -643,10 +644,10 @@ hexo d
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -981,7 +982,7 @@ $(document).ready(function() {
 </style>
 <meting-js
 
-    id="439330282"
+    id="3171699092"
 
     server="netease"
 
