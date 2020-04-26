@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tpjun.top/"/>
-  <updated>2020-04-04T16:48:51.663Z</updated>
+  <updated>2020-04-26T11:14:08.053Z</updated>
   <id>http://www.tpjun.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>购买域名+github绑定域名</title>
+    <link href="http://www.tpjun.top/2020/04/26/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D+github%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
+    <id>http://www.tpjun.top/2020/04/26/购买域名+github绑定域名/</id>
+    <published>2020-04-26T11:13:00.000Z</published>
+    <updated>2020-04-26T11:14:08.053Z</updated>
+    
+    <summary type="html">
+    
+      github绑定域名
+    
+    </summary>
+    
+      <category term="技术" scheme="http://www.tpjun.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>win10搭建Hexo——超详细</title>
@@ -77,26 +97,6 @@
   </entry>
   
   <entry>
-    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
-    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
-    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
-    <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-30T02:40:54.094Z</updated>
-    
-    <summary type="html">
-    
-      如何搭建免费cdn
-    
-    </summary>
-    
-      <category term="技术" scheme="http://www.tpjun.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello-World</title>
     <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
     <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
@@ -117,15 +117,15 @@
   </entry>
   
   <entry>
-    <title>购买域名+github绑定域名</title>
-    <link href="http://www.tpjun.top/2020/03/19/%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D+github%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
-    <id>http://www.tpjun.top/2020/03/19/购买域名+github绑定域名/</id>
+    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
+    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
+    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-04-26T10:58:16.198Z</updated>
+    <updated>2020-03-30T02:40:54.094Z</updated>
     
     <summary type="html">
     
-      github绑定域名
+      如何搭建免费cdn
     
     </summary>
     
