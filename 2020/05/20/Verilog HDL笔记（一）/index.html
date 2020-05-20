@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Verilog HDL笔记 | 转生 | 你在吗(⌒▽⌒)</title>
+  <title itemprop="name">Verilog HDL笔记(一) | 转生 | 你在吗(⌒▽⌒)</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -324,7 +324,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Verilog HDL笔记</h1>
+      Verilog HDL笔记(一)</h1>
       <p class="entry-census">
         <span>
           <a href="https://CCIT18101030214TPJ.github.io">
@@ -465,171 +465,8 @@
          end
 endmodule
 </code></pre><p><strong>verilog  HDL建模（原理图建模，门级建模，数据流建模，行为建模，混合建模）</strong></p>
-<font color="red">LED小灯引脚对应芯片是29~32,37~40</font>。<br>### 2.闪烁灯分频(4个交替闪烁）<br><code>module light(clk,ledout);//clk是一个信号
-       intput clk;
-       output[7:0] ledout;
-       reg[7:0] ledout;
-       reg[24:0] count;
-       initial 
-       ledout=8&#39;h0f;
-       always@(posedge clk)
-       begin
-           count=count+1;
-          if(count==24000000)
-          begin
-            ledout=~ledout;
-            count=0;
-          end
-       end
-endmoudule</code><br><strong>异或：相同为0，相异为1。</strong><br><strong>clk在18引脚</strong><br><br>##### 3.L1灯以0.5秒周期闪烁（即亮0.25秒，灭0.25秒），L2灯以2秒周期闪烁，其余灯灭。<br><code>module ttt(ledout,clk);
-    input clk;
-    output [7:0] ledout;
-    reg[7:0] ledout;
-    reg[22:0] count0;//1/24000000*X=0.25;X=6000000;
-    reg[24:0] count1;··
-   //reg clk1;
-    initial
-       ledout=8&#39;b11111100;
+<p><font color="red">LED小灯引脚对应芯片是29~32,37~40</font>。</p>
 
-    always@(posedge clk)
-    begin
-       count0=count0+1;
-        if(count0==6000000)
-        begin
-            ledout[0]=~ledout[0];
-             count0=0;
-            //clk1=~clk1;
-      end
-   end
-
-     always@(posedge clk)
-     begin
-        count1=count1+1;
-        if(count1==12000000)
-          begin
-            ledout[1]=~ledout[1];
-
-          end
-     end
-endmodule</code><br>#####  4.（老师） L1灯以0.5秒周期闪烁（即亮0.25秒，灭0.25秒），L2灯以2秒周期闪烁，其余灯灭<br><code>### 方法一：
-module light（clk，ledout）
-      input clk；
-      output[7:0] ledout;
-      reg[7:0] ledout;
-      reg[22:0] count0;
-      reg[24:0] count1;
-      initial
-         ledout=8&#39;hff;
-         always@(posedge clk)
-         begin
-           count0=count0+1;
-           if(count0==23&#39;d6000000)
-           begin
-               ledout[0]=~ledout[0];
-          //   ledout=ledout^8&#39;h01;//与上面的一样
-                count0=0;
-             end
-          end
-         alway@(posedge clk)
-     begin
-          count1=count1+1;
-            if(count1==25&#39;d12000000)
-             begin
-                ledout[1]=~ledout[1];
-                count1=0;
-             end
-      end
-
-endmodule
-### 方法二：
-module test(clk,ledout);
-    input clk;
-    output[7:0] ledout;
-    reg[7:0] ledout;
-    reg[23:0] count;
-     reg[3:0] flag;
-   initial
-   begin
-       ledout=8&#39;hff;
-       flag=0；
-   end
-    always@(posedge clk)
-    begin
-        count=count+1;
-        if(count==24&#39;d12000000)
-         begin
-         ledout=ledout&lt;&lt;1;
-         flag=flag+1;
-         if(flag&gt;8)
-           begin
-              ledout=8&#39;hfe;//8&#39;11111111
-              flag=0;
-           end
-         count=0;
-       end
-   end
-endmodule</code><br>##### 5.流水灯逐个闪烁，其余灭<br><code>module test(clk,ledout);
-    input clk;
-    output[7:0] ledout;
-    reg[7:0] ledout;
-    reg[23:0] count;
-     reg[3:0] flag;
-   initial
-       ledout=8&#39;hfe;//高到低移8&#39;h7f
-    always@(posedge clk)
-    begin
-        count=count+1;
-        if(count==24&#39;d12000000)
-         begin
-             ledout=(ledout&lt;&lt;1)+1;//+128
-                //ledout={ledout[0],ledout[7:1]}//{}拼接运算符
-                 flag=flag+1;
-                  if(flag==8)
-                  begin
-               ledout=8&#39;hfe;//8&#39;h7f
-                    flag=0;
-                end
-           count=0;
-         end
-   end
-endmodule</code><br>##### 6.译码器设计<br>概念：较少的输入控制较多的输出。<br>译码器可分为：变量译码器和显示译码器。<br><code>module code3_8(sw,ledout,seg);
-    input[2:0] sw;
-    output[7:0] ledout;
-    reg[7:0] ledout;
-    reg[7:0] seg;    
-
-    initial
-    begin
-        seg=8&#39;h00;
-        ledout=8&#39;hff;
-   end
-
-     always@(sw)
-     begin
-         case(sw)
-            3&#39;b000:ledout=8&#39;b11111110;
-            3&#39;b001:ledout=8&#39;b11111101;
-            3&#39;b010:ledout=8&#39;b11111011;
-            3&#39;b011:ledout=8&#39;b11110111;
-            3&#39;b100:ledout=8&#39;b11101111;
-            3&#39;b101:ledout=8&#39;b11011111;
-            3&#39;b110:ledout=8&#39;b10111111;
-            3&#39;b111:ledout=8&#39;b01111111;
-            default:ledout=8&#39;b11111111;
-         endcase
-          case(sw)
-            3&#39;b000:seg=8&#39;h06;//共阴数码管8&#39;h06
-            3&#39;b001:seg=8&#39;h5b;//8&#39;h5b
-            3&#39;b010:seg=8&#39;h4f;//8&#39;h4f
-            3&#39;b011:seg=8&#39;h66;//8&#39;h66
-            3&#39;b100:seg=8&#39;h6d;//8&#39;h6d
-            3&#39;b101:seg=8&#39;h7d;//8&#39;h7d
-            3&#39;b110:seg=8&#39;h07;//8&#39;h07
-            3&#39;b111:seg=8&#39;h7f;//8&#39;h7f
-            default:seg=8&#39;h00;//8&#39;h00
-         endcase
-     end
-endmodule</code><br><font color="red">sw2~0（拨码开关）&gt;&gt;引脚71 72 73seg0&gt;&gt;引脚124<br>seg1&gt;&gt;123<br>seg2&gt;&gt;121<br>seg3&gt;&gt;120<br>seg4&gt;&gt;119<br>seg5&gt;&gt;125<br>seg6&gt;&gt;127<br>seg7&gt;&gt;122<br></font>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -660,7 +497,7 @@ endmodule</code><br><font color="red">sw2~0（拨码开关）&gt;&gt;引脚71 72
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/05/20/Verilog HDL笔记（二）/" rel="prev">
+            <a href="/2020/05/21/Verilog HDL笔记（二）/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a19.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a19.jpg">
               </div>
@@ -732,7 +569,7 @@ endmodule</code><br><font color="red">sw2~0（拨码开关）&gt;&gt;引脚71 72
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -744,10 +581,10 @@ endmodule</code><br><font color="red">sw2~0（拨码开关）&gt;&gt;引脚71 72
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
