@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tpjun.top/"/>
-  <updated>2020-04-26T11:14:08.053Z</updated>
+  <updated>2020-05-20T09:31:43.712Z</updated>
   <id>http://www.tpjun.top/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Verilog HDL笔记(一)</title>
+    <link href="http://www.tpjun.top/2020/05/20/Verilog%20HDL%E7%AC%94%E8%AE%B0/"/>
+    <id>http://www.tpjun.top/2020/05/20/Verilog HDL笔记/</id>
+    <published>2020-05-20T08:30:00.000Z</published>
+    <updated>2020-05-20T09:31:43.712Z</updated>
+    
+    <summary type="html">
+    
+      课堂小笔记
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://www.tpjun.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Verilog HDL笔记（二）</title>
+    <link href="http://www.tpjun.top/2020/05/20/Verilog%20HDL%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://www.tpjun.top/2020/05/20/Verilog HDL笔记（二）/</id>
+    <published>2020-05-20T08:30:00.000Z</published>
+    <updated>2020-05-20T09:46:23.147Z</updated>
+    
+    <summary type="html">
+    
+      笔记
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://www.tpjun.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Verilog HDL笔记</title>
+    <link href="http://www.tpjun.top/2020/05/20/Verilog%20HDL%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://www.tpjun.top/2020/05/20/Verilog HDL笔记（一）/</id>
+    <published>2020-05-20T08:30:00.000Z</published>
+    <updated>2020-05-20T09:38:48.277Z</updated>
+    
+    <summary type="html">
+    
+      笔记
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://www.tpjun.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>购买域名+github绑定域名</title>
@@ -97,15 +157,15 @@
   </entry>
   
   <entry>
-    <title>Hello-World</title>
-    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
-    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
+    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
+    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
+    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-30T02:35:30.107Z</updated>
+    <updated>2020-03-30T02:40:54.094Z</updated>
     
     <summary type="html">
     
-      frist blog
+      如何搭建免费cdn
     
     </summary>
     
@@ -117,15 +177,15 @@
   </entry>
   
   <entry>
-    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
-    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
-    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
+    <title>Hello-World</title>
+    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
+    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-30T02:40:54.094Z</updated>
+    <updated>2020-03-30T02:35:30.107Z</updated>
     
     <summary type="html">
     
-      如何搭建免费cdn
+      frist blog
     
     </summary>
     
