@@ -355,15 +355,15 @@
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616115828.png" alt></p>
 <p>接下来就是入坑时刻，在这里简绍连接Micro:bit蓝牙设备的两种方法。</p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p><strong>本机使用windows 10系统，进行操作。</strong></p>
-<h5 id="Step1：打开电脑蓝牙"><a href="#Step1：打开电脑蓝牙" class="headerlink" title="Step1：打开电脑蓝牙"></a>Step1：打开电脑蓝牙</h5><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616141349.png" width="500" height="250"></p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><strong>本机使用windows 10系统，进行操作。</strong></p>
+<h3 id="Step1：打开电脑蓝牙"><a href="#Step1：打开电脑蓝牙" class="headerlink" title="Step1：打开电脑蓝牙"></a>Step1：打开电脑蓝牙</h3><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616141349.png" width="500" height="250"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616141411.png" width="500" height="250"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616141434.png" width="500" height="250"></p>
-<h5 id="step2：下载固件到开发板"><a href="#step2：下载固件到开发板" class="headerlink" title="step2：下载固件到开发板"></a>step2：下载固件到开发板</h5><p>如果microbit开发板想和我们的电脑通过蓝牙进行无线通信，我们就需要启动板子的蓝牙设备功能，因此要下载固件到开发板中进行激活。</p>
+<h3 id="step2：下载固件到开发板"><a href="#step2：下载固件到开发板" class="headerlink" title="step2：下载固件到开发板"></a>step2：下载固件到开发板</h3><p>如果microbit开发板想和我们的电脑通过蓝牙进行无线通信，我们就需要启动板子的蓝牙设备功能，因此要下载固件到开发板中进行激活。</p>
 <p><a href="https://makecode.microbit.org/v0/89975-20684-84568-20127" target="_blank" rel="noopener">https://makecode.microbit.org/v0/89975-20684-84568-20127</a></p>
 <p>打开上面链接下载固件，然后用USB线连接开发板和电脑，将下载的固件移到开发板对应的MINCROBIT（G)盘中，这个时候会发现板子上黄色小灯不停闪烁，这说明在下载中，然后板子中LED小灯会显出<font color="red">Hi！</font>,这就说明下载成功。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图202006161455533aa.jpg" alt></p>
-<h5 id="step3：使用谷歌浏览器工具"><a href="#step3：使用谷歌浏览器工具" class="headerlink" title="step3：使用谷歌浏览器工具"></a>step3：使用谷歌浏览器工具</h5><p>打开<font color="red">Chrome</font>浏览器输入以下网址：<a href="chrome://bluetooth-internals/#adapter" target="_blank" rel="noopener">chrome://bluetooth-internals/#adapter</a></p>
+<h3 id="step3：使用谷歌浏览器工具"><a href="#step3：使用谷歌浏览器工具" class="headerlink" title="step3：使用谷歌浏览器工具"></a>step3：使用谷歌浏览器工具</h3><p>打开<font color="red">Chrome</font>浏览器输入以下网址：<a href="chrome://bluetooth-internals/#adapter" target="_blank" rel="noopener">chrome://bluetooth-internals/#adapter</a></p>
 <p>找到对应的板子蓝牙（BBC micro:bit）进行连接。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616150441.png" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616150710.png" alt></p>
@@ -371,7 +371,7 @@
 <p>出现<font color="red">connected</font>表示连接成功</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//8D6C3DB86C953106060CAA3642CC6.jpg" alt></p>
 <p>板子出现以上结果显示<font color="red">C</font>表示设备连接成功。</p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>在方法一中step1和step2的基础上，进行程序编写，也可实现BBC micro:bit蓝牙设备连接，在这里编辑器我用的是<strong>Adobe Dreamweaver</strong>和<strong>Notepad++</strong>，这两个软件都可下载安装。程序内容如下：</p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>在方法一中step1和step2的基础上，进行程序编写，也可实现BBC micro:bit蓝牙设备连接，在这里编辑器我用的是<strong>Adobe Dreamweaver</strong>和<strong>Notepad++</strong>，这两个软件都可下载安装。程序编写使用Html和JavaScript语法，<font color="red">文件格式是.html</font>然后用浏览器本地打开即可。程序内容如下：</p>
 <pre><code>&lt;html&gt;
     &lt;head&gt;
           &lt;script&gt;
@@ -424,8 +424,26 @@
         &lt;/button&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>程序编写使用Html和JavaScript，<font color="red">文件格式是.html</font>然后用浏览器本地打开即可。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616161710.png" alt></p>
+</code></pre><p>1.首先我们要通过文本按钮来扫描发现周边设备，这个按钮按下后要调用相应的函数来进行扫描，这里的id号自由定义，但要自己明白，onclink表示只要按钮按下函数就开始调用：</p>
+<pre><code>&lt;button id = &quot;btn_scan&quot; onclick=&quot;discoverDevices()&quot;&gt;Start scan
+</code></pre><p>2.函数navigator.bluetooth.requestDevice的功能为发现蓝牙设备，必须由用户的手动触发：</p>
+<pre><code>navigator.bluetooth.requestDevice(options)
+</code></pre><p>3.这个时候将发现的蓝牙设备的名字和ID通过控制台打印输出：</p>
+<pre><code> console.log(&#39;&gt; Name:&#39; +device.name);
+                      console.log(&#39;&gt; Id:&#39; +device.id);
+                      console.log(&#39;&gt; Connected:&#39; +device.gatt.connected);
+
+</code></pre><p>4.在扫描后出现众多的蓝牙设备中，用户要选择自己的蓝牙设备，selected_device = device;这句语句就是将用户选择的蓝牙设备赋给开始定义的变量selected_device给保存起来。</p>
+<pre><code>selected_device = device;
+console.log(selected_device);
+</code></pre><p>5.这个时候BBC板子蓝牙被扫描到后，我就需要进行连接，这里我们编写connect()；这个函数用于连接，来实现蓝牙设备的连接，connecting表示设备正在连接,函数selected_device.gatt.connect()的调用会通过浏览器来将你选择的外部设备与你的电脑蓝牙进行连接。</p>
+<pre><code> console.log(&quot;connecting&quot;);
+ selected_device.gatt.connect();
+</code></pre><p>6.若是最后连接成功会打印输出该蓝牙设备的id等信息，</p>
+<pre><code>console.log(&quot;Connected to&quot; + server.device.id);
+console.log(&quot;Connected=&quot; + server.connected);
+connected_server = server;
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616161710.png" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616161948.png" alt></p>
 <p>这样及连接成功。现象也是在开发板上显示<font color="red">C</font></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//8D6C3DB86C953106060CAA3642CC6.jpg" alt></p>
