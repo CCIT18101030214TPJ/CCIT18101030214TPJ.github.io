@@ -374,53 +374,82 @@
 <h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>在方法一中step1和step2的基础上，进行程序编写，也可实现BBC micro:bit蓝牙设备连接，在这里编辑器我用的是<strong>Adobe Dreamweaver</strong>和<strong>Notepad++</strong>，这两个软件都可下载安装。程序编写使用Html和JavaScript语法，<font color="red">文件格式是.html</font>然后用浏览器本地打开即可。程序内容如下：</p>
 <pre><code>&lt;html&gt;
     &lt;head&gt;
-          &lt;script&gt;
-              var    selected_device;
-              var    connected_server;
-              function discoverDevices()
-              {
-                  console.log(&quot;discoverDevices&quot;);
-                  var options = {acceptAllDevices:true}
-                  navigator.bluetooth.requestDevice(options)
-                  .then(device =&gt;{
-                      console.log(&#39;&gt; Name:&#39; +device.name);
-                      console.log(&#39;&gt; Id:&#39; +device.id);
-                      console.log(&#39;&gt; Connected:&#39; +device.gatt.connected);
-                      selected_device = device;
-                      console.log(selected_device);
-                      connect();
-                  })
-                  .catch(error =&gt;{
-                      alert(&#39;ERROR:&#39; +error);
-                      console.log(&#39;ERROR:&#39; + error);
-                  });
-              }
+        &lt;script&gt;
+            var selected_device;           // 保存用户选择的蓝牙设备
+            var connected_server;           //保存用户连接的蓝牙设备
+            var connected=false;            //保存电脑蓝牙当前连接状态
+            function discoverDevices()
+            {
+                console.log(&quot;discoverDevices&quot;);     //consol.log 控制台打印输出
+                var options = {acceptAllDevices:true}        //发现所有周边蓝牙设备
+                navigator.bluetooth.requestDevice(options)      //Navigator对象，包含有关游览器的信息
+                .then(device =&gt; {
+                    console.log(&#39;&gt; Name:        &#39; + device.name);
+                    console.log(&#39;&gt; Id:          &#39; + device.id);
+                    console.log(&#39;&gt; Connected:   &#39; + device.gatt.connected);
+                    selected_device = device;
+                    console.log(selected_device);
+                    connect();  
+                })
+                .catch(error =&gt;{
+                    alert(&#39;ERROR:&#39; +error);
+                    console.log(&#39;ERROR:&#39; +error);
+                });
+            }
 
-              function connect()
-              {
-                  console.log(&quot;connecting&quot;);
-                  selected_device.gatt.connect()
-                  .then(
-                      function(server)
-                      {
-                          console.log(&quot;Connected to&quot; + server.device.id);
-                          console.log(&quot;Connected=&quot; + server.connected);
-                          connected_server = server;
-                      },
-                      function (error)
-                      {
-                          console.log(&quot;ERROR:could not connct-&quot; + error);
-                          alert(&quot;ERROR:could not connct-&quot; + error);
-                      }
-                  )
-              }
-          &lt;/script&gt;
+            function connect()
+            {
+                console.log(&quot;connecting&quot;);
+                selected_device.gatt.connect()
+                .then(
+                    function(server)                            //表示连接成功
+                    {
+                        console.log(&quot;Connected to&quot; + server.device.id);
+                        console.log(&quot;Connected=&quot; + server.connected);
+                        connected_server = server;
+                        setConnectedStatus(true);
+
+                    },
+                    function(error)                              //表示连接失败
+                    {
+                        console.log(&quot;ERROR:could not connct-&quot; + error);
+                        alert(&quot;ERROR:could not connct-&quot; + error);
+                        setConnectedStatus(false);
+
+                    }
+                );
+            }
+            function setConnectedStatus(status)
+            {
+                connected=status;
+                document.getElementById(&#39;status_connected&#39;).innerHTML=status;
+                if(status==true)
+                {
+                    document.getElementById(&#39;btn_scan&#39;).innerHTML=&quot;Disconnect&quot;;
+                }
+                else
+                {
+                    document.getElementById(&#39;btn_scan&#39;).innerHTML=&quot;Discover Devices&quot;;
+                }
+            }
+
+        &lt;/script&gt;
     &lt;/head&gt;
-    &lt;body&gt;
+    &lt;body&gt;       
         &lt;h2&gt;
-            Device Discovery
-         &lt;/h2&gt;
-        &lt;button id = &quot;btn_scan&quot; onclick=&quot;discoverDevices()&quot;&gt;Start scan
+            Status  &lt;!-- 显示蓝牙状态--&gt;
+        &lt;/h2&gt;
+        &lt;table border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;    &lt;b&gt;Connected&lt;/b&gt;    &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td id=&quot;status_connected&quot;&gt;False&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt; 
+        &lt;h2&gt;Device Discovery &lt;/h2&gt;     &lt;!-- 扫描/发现蓝牙设备 --&gt;
+        &lt;button id=&quot;btn_scan&quot; onclick=&quot;discoverDevices()&quot;&gt;
+            Start scan
         &lt;/button&gt;
     &lt;/body&gt;
 &lt;/html&gt;
@@ -439,13 +468,17 @@ console.log(selected_device);
 </code></pre><p>5.这个时候BBC板子蓝牙被扫描到后，我就需要进行连接，这里我们编写connect()；这个函数用于连接，来实现蓝牙设备的连接，connecting表示设备正在连接,函数selected_device.gatt.connect()的调用会通过浏览器来将你选择的外部设备与你的电脑蓝牙进行连接。</p>
 <pre><code> console.log(&quot;connecting&quot;);
  selected_device.gatt.connect();
-</code></pre><p>6.若是最后连接成功会打印输出该蓝牙设备的id等信息，</p>
+</code></pre><p>6.若是最后连接成功会打印输出该蓝牙设备的id等信息，connected_server = server语句就是将已连接的蓝牙设备赋给开始定义的变量connected_server给保存起来。</p>
 <pre><code>console.log(&quot;Connected to&quot; + server.device.id);
 console.log(&quot;Connected=&quot; + server.connected);
 connected_server = server;
-</code></pre><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616161710.png" alt></p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616161948.png" alt></p>
-<p>这样及连接成功。现象也是在开发板上显示<font color="red">C</font></p>
+</code></pre><p>7.设备连接成功后，我们尽可能的完善功能，将连接的状态显示出来，函数function setConnectedStatus(status)就是用来设置电脑连接的状态，通过按钮(Disconnect)可控制蓝牙状态的断开。connected这是一个全局变量用来保存电脑蓝牙当前连接状态（status），将状态值true或者false赋给connected。</p>
+<pre><code>connected=status;
+document.getElementById(&#39;btn_scan&#39;).innerHTML=&quot;Disconnect&quot;
+</code></pre><p><strong>操作步骤如下</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616190252.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200616191120.png" alt></p>
+<p>连接成功。现象也是在开发板上显示<font color="red">C</font></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//8D6C3DB86C953106060CAA3642CC6.jpg" alt></p>
 
         </div>
@@ -533,7 +566,7 @@ connected_server = server;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -545,10 +578,10 @@ connected_server = server;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
