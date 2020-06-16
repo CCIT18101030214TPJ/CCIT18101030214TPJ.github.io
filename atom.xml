@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tpjun.top/"/>
-  <updated>2020-05-26T07:31:10.668Z</updated>
+  <updated>2020-06-16T08:22:12.161Z</updated>
   <id>http://www.tpjun.top/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MicroBit蓝牙设备连接教程（一）</title>
+    <link href="http://www.tpjun.top/2020/06/16/MicroBit%E8%93%9D%E7%89%99%E8%AE%BE%E5%A4%87%E8%BF%9E%E6%8E%A5(%E4%B8%80)/"/>
+    <id>http://www.tpjun.top/2020/06/16/MicroBit蓝牙设备连接(一)/</id>
+    <published>2020-06-16T03:19:00.000Z</published>
+    <updated>2020-06-16T08:22:12.161Z</updated>
+    
+    <summary type="html">
+    
+      此篇对MicroBit蓝牙设备如何连接进行详解
+    
+    </summary>
+    
+      <category term="技术" scheme="http://www.tpjun.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电影《一个母亲的复仇》</title>
+    <link href="http://www.tpjun.top/2020/06/10/%E7%94%B5%E5%BD%B1%E3%80%8A%E4%B8%80%E4%B8%AA%E6%AF%8D%E4%BA%B2%E7%9A%84%E5%A4%8D%E4%BB%87%E3%80%8B/"/>
+    <id>http://www.tpjun.top/2020/06/10/电影《一个母亲的复仇》/</id>
+    <published>2020-06-10T08:30:00.000Z</published>
+    <updated>2020-06-16T03:23:36.484Z</updated>
+    
+    <summary type="html">
+    
+      正义到不了的地方还有母亲......
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://www.tpjun.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sakura主题的安装</title>
+    <link href="http://www.tpjun.top/2020/05/26/MicroBit%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E7%89%B9%E6%80%A7(%E4%BA%8C)%20/"/>
+    <id>http://www.tpjun.top/2020/05/26/MicroBit添加服务特性(二) /</id>
+    <published>2020-05-26T05:19:00.000Z</published>
+    <updated>2020-05-26T07:31:10.668Z</updated>
+    
+    <summary type="html">
+    
+      此篇文章是对该主题的安装详解。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://www.tpjun.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>Sakura主题的安装</title>
@@ -157,15 +217,15 @@
   </entry>
   
   <entry>
-    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
-    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
-    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
+    <title>Hello-World</title>
+    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
+    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-30T02:40:54.094Z</updated>
+    <updated>2020-03-30T02:35:30.107Z</updated>
     
     <summary type="html">
     
-      如何搭建免费cdn
+      frist blog
     
     </summary>
     
@@ -177,15 +237,15 @@
   </entry>
   
   <entry>
-    <title>Hello-World</title>
-    <link href="http://www.tpjun.top/2020/03/19/hexo-world/"/>
-    <id>http://www.tpjun.top/2020/03/19/hexo-world/</id>
+    <title>PicGo-jsDelivr-GitHub搭建免费cdn图床</title>
+    <link href="http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/"/>
+    <id>http://www.tpjun.top/2020/03/19/PicGo-jsDelivr-GitHub/</id>
     <published>2020-03-19T14:16:01.000Z</published>
-    <updated>2020-03-30T02:35:30.107Z</updated>
+    <updated>2020-03-30T02:40:54.094Z</updated>
     
     <summary type="html">
     
-      frist blog
+      如何搭建免费cdn
     
     </summary>
     
