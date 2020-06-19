@@ -351,7 +351,7 @@
         
         <div class="entry-content">
           <blockquote>
-<p>继Micro:bit蓝牙设备成功连接之后，添加相应的服务特性</p>
+<p>继Micro:bit蓝牙设备成功连接之后，就需添加相应的服务特性。我们的开发板在成功连接之后，我们不能让其只处于连接，我们要慢慢控制板子，优化程序，要想使用板子上的功能，就需要将相应的服务添加上去，让开发板激活相应的服务功能，近而通过修改电脑端源码进行操控板子。</p>
 </blockquote>
 <h3 id="Step1-发现服务和特性"><a href="#Step1-发现服务和特性" class="headerlink" title="Step1:发现服务和特性"></a>Step1:发现服务和特性</h3><p>1.大家在我的 BBC MicroBit蓝牙设备系列（一）中从<a href="https://makecode.microbit.org/v0/89975-20684-84568-20127" target="_blank" rel="noopener">https://makecode.microbit.org/v0/89975-20684-84568-20127</a> 下载固件到BBC Micro:bit开发板时，会发现，我们的这个BBC MicroBit开发板板服务在程序设计时已经包含了<font color="red">蓝牙加速计服务</font>和<font color="red">蓝牙led服务</font>。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200617192550.png" alt></p>
@@ -746,7 +746,7 @@ connected_server.getPrimaryServices()
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -758,10 +758,10 @@ connected_server.getPrimaryServices()
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
