@@ -457,7 +457,7 @@
 &lt;div id=&quot;model_number&quot;&gt;&lt;/div&gt; 
 &lt;hr&gt;
 &lt;/body&gt;
-</code></pre><h3 id="二，代码解析"><a href="#二，代码解析" class="headerlink" title="二，代码解析"></a>二，代码解析</h3><p>1.你的蓝牙设备应该包含GATT设备信息服务，该服务至少应该包含模型名称字符串特征。我们将读取它的值并在web页面中显示结果。函数function readModelNumber() 就是读特性所调用的函数。只有当我们成功连接到一个设备时，才能执行读取和写入特征值。<font color="red">在进行读或写操作之前，我们还需要知道所连接的设备包含所需的服务和特性。因此，服务发现也必须完成。</font>因此，在readModelNumberl()和randomLEDs()函数开始时，我们将在开始时执行一些简单的防御性验证，以检查我们已经达到了所需的状态，以下代码就是防御性验证:</p>
+</code></pre><h3 id="二，代码解析"><a href="#二，代码解析" class="headerlink" title="二，代码解析"></a>二，代码解析</h3><p>1.你的蓝牙设备应该包含GATT设备信息服务，该服务至少应该包含模型名称字符串特征。我们将读取它的值并在web页面中显示结果。函数readModelNumber() 就是读特性所调用的函数。只有当我们成功连接到一个设备时，才能执行读取和写入特征值。<font color="red">在进行读或写操作之前，我们还需要知道所连接的设备包含所需的服务和特性。因此，服务发现也必须完成。</font>因此，在readModelNumberl()和randomLEDs()函数开始时，我们将在开始时执行一些简单的防御性验证，以检查我们已经达到了所需的状态，以下代码就是防御性验证:</p>
 <pre><code>if (!connected) { 
             alert(&quot;Error: Discover and connect to a device before using this function&quot;);
             return; 
@@ -521,9 +521,26 @@ console.log(model_number_string);
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/06/21/MicroBit启用通知和指示（四）/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                MicroBit蓝牙启用通知（四）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/06/17/MicroBit添加服务 (二)/" rel="next">
               <div class="background">

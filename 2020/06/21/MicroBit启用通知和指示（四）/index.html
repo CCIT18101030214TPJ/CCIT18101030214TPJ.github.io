@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | 转生 | 你在吗(⌒▽⌒)</title>
+  <title itemprop="name">MicroBit蓝牙启用通知（四） | 转生 | 你在吗(⌒▽⌒)</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -314,633 +314,228 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn@2.0/img/cover/(11).jpg.webp" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      MicroBit蓝牙启用通知（四）</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://CCIT18101030214TPJ.github.io">
+            <img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn@2.0/img/custom/avatar1.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://CCIT18101030214TPJ.github.io">hyp</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-6-21<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">小白技术协会</h1>
-    <span class="cat-des">
-      <p>Technical Communication</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <blockquote>
+<p>在本系列的前几部分中，我了解了如何使用Web蓝牙API来发现蓝牙低能耗(LE)设备、形成连接、发现和缓存GATT服务和特征以及读写特征值在。最后一部分中，我们将学习如何使用通知。</p>
+</blockquote>
+<h2 id="一，要添加的代码内容和相关的解析"><a href="#一，要添加的代码内容和相关的解析" class="headerlink" title="一，要添加的代码内容和相关的解析"></a>一，要添加的代码内容和相关的解析</h2><h3 id="step1-用户界面状态"><a href="#step1-用户界面状态" class="headerlink" title="step1:用户界面状态"></a>step1:用户界面状态</h3><p>1.首先添加一个变量，我们可以用来跟踪通知订阅的状态:</p>
+<pre><code>var notifications_enabled = false; 
+</code></pre><p>2.添加函数<code>setNotificationsStatus(status)</code>，将通知订阅的状态传进来，将该状态赋给notifications_enabled。</p>
+<pre><code>function setNotificationsStatus(status) { 
+        notifications_enabled = status; 
+        document.getElementById(&#39;status_notifications&#39;).innerHTML = status; 
+    } 
+</code></pre><p>3.有这个<code>setNotificationsStatus(status)</code>函数，我们要进行调用，将其放入<code>resetUI()</code>函数中调用。</p>
+<pre><code>function resetUI()     
+        {
+            setConnectedStatus(false);
+            setDiscoveryStatus(false);   
+          ``setNotificationsStatus(false); ``//要添加的代码就这一句
+        }
+</code></pre><h3 id="Step2-验证状态"><a href="#Step2-验证状态" class="headerlink" title="Step2:验证状态"></a>Step2:验证状态</h3><p>订阅和接收通知只能在我们与设备连接时执行。我们还需要检查连接的设备是否包含所要求的相关的服务和特征，然后我们才试图启用有关该特征的通知。因此，我们将在订阅加速计数据通知的代码中包含一些验证，就像我们在上一部分中读取和写入特征时所做的那样。添加的函数是<code>toggleAccelerometerNotifications()</code></p>
+<p>内容如下：</p>
+<pre><code>function toggleAccelerometerNotifications() { 
+        console.log(&quot;toggleAccelerometerNotifications&quot;); 
+        if (!connected) { 
+            alert(&quot;Error: Discover and connect to a device before using this function&quot;);  
+            return;  
+        } 
+        if (!services_discovered) { 
+            alert(&quot;Error: Service discovery has not yet completed&quot;); 
+            return; 
+        }  
+        if (!has_accelerometer_service) {  
+            alert(&quot;Error: The connected device does not contain the accelerometer service&quot;);  
+            return;
+        } 
+        if (!has_accelerometer_data) {  
+            alert(&quot;Error: The connected device does not contain the accelerometer data characteristic&quot;);   return; 
+        } 
+</code></pre><h3 id="Step3-启用和禁用通知"><a href="#Step3-启用和禁用通知" class="headerlink" title="Step3:启用和禁用通知"></a>Step3:启用和禁用通知</h3><p>通知也是有启用和禁用的，我们要么开始通知，要么取消订阅并停止它们，这取决于当前的订阅状态。所以我们要有以下判断：</p>
+<pre><code>//接着上面添加
+if (!notifications_enabled) {  
+        accelerometer_data.startNotifications()
+            .then(_ =&gt; { 
+            console.log(&#39;accelerometer notifications started&#39;);  
+            setNotificationsStatus(true); 
+
+        })  
+            .catch(error =&gt; { 
+            console.log(&#39;Error: &#39; + error);   
+            alert(&#39;Error: &#39; + error);  
+            return;  
+        }); 
+    } 
+        else
+        { 
+            accelerometer_data.stopNotifications()  
+                .then(_ =&gt; {  
+                console.log(&#39;accelerometer notifications stopped&#39;);  
+                setNotificationsStatus(false); 
+            })   
+                .catch(error =&gt; {  
+                console.log(&#39;Could not stop accelerometer_data notifications: &#39; + error);  
+            }); 
+        }
+    }
+</code></pre><h3 id="Step4-通知事件"><a href="#Step4-通知事件" class="headerlink" title="Step4:通知事件"></a>Step4:通知事件</h3><p>我们仍然需要一些代码来处理收到的通知。我们还需要在停止通知时做一些整理,所以在<code>toggleAccelerometerNotifications()</code>函数需要添加以下代码：</p>
+<pre><code>accelerometer_data.addEventListener(&#39;characteristicvaluechanged&#39;, onAccelerometerData);
+accelerometer_data.removeEventListener(&#39;characteristicvaluechanged&#39;, onAccelerometerData); 
+</code></pre><p>在<code>toggleAccelerometerNotifications()</code>函数中的位置如下：</p>
+<pre><code>if (!notifications_enabled) {  
+        accelerometer_data.startNotifications()
+            .then(_ =&gt; { 
+            console.log(&#39;accelerometer notifications started&#39;);  
+            setNotificationsStatus(true); 
+            “accelerometer_data.addEventListener(&#39;characteristicvaluechanged&#39;, onAccelerometerData); ”//只用添加这句代码
+        })  
+            .catch(error =&gt; { 
+            console.log(&#39;Error: &#39; + error);   
+            alert(&#39;Error: &#39; + error);  
+            return;  
+        }); 
+    } 
+        else
+        { 
+            accelerometer_data.stopNotifications()  
+                .then(_ =&gt; {  
+                console.log(&#39;accelerometer notifications stopped&#39;);  
+                setNotificationsStatus(false); 
+                “accelerometer_data.removeEventListener(&#39;characteristicvaluechanged&#39;, onAccelerometerData); ”//只用添加这句代码
+            })   
+                .catch(error =&gt; {  
+                console.log(&#39;Could not stop accelerometer_data notifications: &#39; + error);  
+            }); 
+        }
+    }
+</code></pre><p>当接收到某个特征的通知时，将触发一个事件并附加该特征值。在更改中，我们所做的是注册一个函数来处理此事件。</p>
+<h3 id="Step5：处理通知"><a href="#Step5：处理通知" class="headerlink" title="Step5：处理通知"></a>Step5：处理通知</h3><p>我们的最后一个任务是添加<code>onAccelerometerData</code>函数，它将在每次收到通知时被调用。事件处理程序接收一个事件对象，将附加到事件对象目标值的<code>ArrayBuffer</code>中。</p>
+<pre><code> function onAccelerometerData(event) { 
+         console.log(&quot;onAccelerometerData&quot;);
+         buffer = event.target.value.buffer; 
+         dataview = new DataView(buffer); 
+         X = dataview.getUint16(0, true); 
+         Y = dataview.getUint16(2, true); 
+         Z = dataview.getUint16(4, true);  
+         console.log(&quot;X=&quot; + X + &quot;, Y=&quot; + Y + &quot;, Z+&quot; + Z);  document.getElementById(&quot;accelerometer_data&quot;).innerHTML = &quot;X=&quot; + X + &quot;, Y=&quot; + Y + &quot;, Z=&quot; + Z; }
+</code></pre><h2 id="二，实验现象"><a href="#二，实验现象" class="headerlink" title="二，实验现象"></a>二，实验现象</h2><h3 id="Step1：浏览器现象"><a href="#Step1：浏览器现象" class="headerlink" title="Step1：浏览器现象"></a>Step1：浏览器现象</h3><h3 id="在浏览器中重新加载程序并进行测试。结果应该是这样的"><a href="#在浏览器中重新加载程序并进行测试。结果应该是这样的" class="headerlink" title="在浏览器中重新加载程序并进行测试。结果应该是这样的:"></a>在浏览器中重新加载程序并进行测试。结果应该是这样的:</h3><p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200621232835.png" alt></p>
+<h3 id="Step2：开发板现象"><a href="#Step2：开发板现象" class="headerlink" title="Step2：开发板现象"></a>Step2：开发板现象</h3><p>通过点击按钮，该现象与MicroBit蓝牙设备进行读写特性（三）现象一致。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="/images/donate/AlipayQAA.jpg"></li>
+                <li class="wechat-code"><img src="/images/donate/WeChatQQA.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//aag3.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//aag3.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                MicroBit蓝牙设备进行读写特性（三）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-    MicroBit蓝牙启用通知（四）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-21</div>
-    <p>
-    学习如何使用通知......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//aag3.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-    MicroBit蓝牙设备进行读写特性（三）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-21</div>
-    <p>
-    进行读写特性，控制LED灯亮灭......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/17/MicroBit添加服务 (二)/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//yinghua.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/17/MicroBit添加服务 (二)/">
-    MicroBit蓝牙设备添加服务（二）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-17</div>
-    <p>
-    发现服务和特性与添加</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/17/MicroBit添加服务 (二)/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//meitu1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-    MicroBit蓝牙设备连接教程（一）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-16</div>
-    <p>
-    BBC MicroBit无线蓝牙设备连接......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/05/26/Sakura的主题安装/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/aaa.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/05/26/Sakura的主题安装/">
-    Sakura主题的安装</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-5-26</div>
-    <p>
-    此篇文章是对该主题的安装详解。</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/05/26/Sakura的主题安装/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/04/26/购买域名+github绑定域名/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a9.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/04/26/购买域名+github绑定域名/">
-    购买域名+github绑定域名</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-4-26</div>
-    <p>
-    github绑定域名</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/04/26/购买域名+github绑定域名/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/28/Win10+hexo/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a5.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/28/Win10+hexo/">
-    win10搭建Hexo——超详细</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-28</div>
-    <p>
-    Hexo搭建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/28/Win10+hexo/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a20.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-    PicGo-jsDelivr-GitHub搭建免费cdn图床</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-19</div>
-    <p>
-    如何搭建免费cdn</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/19/hexo-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a14.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/19/hexo-world/">
-    Hello-World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-19</div>
-    <p>
-    frist blog</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/19/hexo-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "t7nucQXUGXYL5YWgStKxqYOr-gzGzoHsz",
+        appKey: "dgqdzx1Wx1hDeVNXGqt322Wr",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://CCIT18101030214TPJ.github.io" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn@2.0/img/custom/avatar1.jpg" itemprop="image" alt="hyp" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="https://CCIT18101030214TPJ.github.io" itemprop="url" rel="author">hyp</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-    MicroBit蓝牙启用通知（四）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-21</div>
-    <p>
-    学习如何使用通知......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/21/MicroBit启用通知和指示（四）/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//aag3.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-    MicroBit蓝牙设备进行读写特性（三）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-21</div>
-    <p>
-    进行读写特性，控制LED灯亮灭......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/17/MicroBit添加服务 (二)/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//yinghua.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/17/MicroBit添加服务 (二)/">
-    MicroBit蓝牙设备添加服务（二）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-17</div>
-    <p>
-    发现服务和特性与添加</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/17/MicroBit添加服务 (二)/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//meitu1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-    MicroBit蓝牙设备连接教程（一）</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-6-16</div>
-    <p>
-    BBC MicroBit无线蓝牙设备连接......</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/06/16/MicroBit蓝牙设备连接(一)/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/05/26/Sakura的主题安装/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/aaa.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/05/26/Sakura的主题安装/">
-    Sakura主题的安装</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-5-26</div>
-    <p>
-    此篇文章是对该主题的安装详解。</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/05/26/Sakura的主题安装/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/04/26/购买域名+github绑定域名/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a9.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/04/26/购买域名+github绑定域名/">
-    购买域名+github绑定域名</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-4-26</div>
-    <p>
-    github绑定域名</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/04/26/购买域名+github绑定域名/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/28/Win10+hexo/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a5.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/28/Win10+hexo/">
-    win10搭建Hexo——超详细</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-28</div>
-    <p>
-    Hexo搭建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/28/Win10+hexo/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a20.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-    PicGo-jsDelivr-GitHub搭建免费cdn图床</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-19</div>
-    <p>
-    如何搭建免费cdn</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/19/PicGo-jsDelivr-GitHub/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/03/19/hexo-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/recdn/abc/a14.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/03/19/hexo-world/">
-    Hello-World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-3-19</div>
-    <p>
-    frist blog</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/03/19/hexo-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
