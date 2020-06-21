@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tpjun.top/"/>
-  <updated>2020-06-19T14:49:30.064Z</updated>
+  <updated>2020-06-21T11:03:59.485Z</updated>
   <id>http://www.tpjun.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MicroBit蓝牙设备进行读写特性（三）</title>
+    <link href="http://www.tpjun.top/2020/06/21/MicroBit%E8%93%9D%E7%89%99%E8%AE%BE%E5%A4%87%E8%BF%9B%E8%A1%8C%E8%AF%BB%E5%86%99%E7%89%B9%E6%80%A7%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>http://www.tpjun.top/2020/06/21/MicroBit蓝牙设备进行读写特性（三）/</id>
+    <published>2020-06-21T08:41:00.000Z</published>
+    <updated>2020-06-21T11:03:59.485Z</updated>
+    
+    <summary type="html">
+    
+      进行读写特性，控制LED灯亮灭......
+    
+    </summary>
+    
+      <category term="技术" scheme="http://www.tpjun.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="悦读" scheme="http://www.tpjun.top/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>MicroBit蓝牙设备添加服务（二）</title>
