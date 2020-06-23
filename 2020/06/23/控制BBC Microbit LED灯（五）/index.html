@@ -356,24 +356,24 @@
 <h3 id="Step1：修改代码"><a href="#Step1：修改代码" class="headerlink" title="Step1：修改代码"></a>Step1：修改代码</h3><p>1.接着要修改HTML代码，在web添加按钮，总共有10个按钮：</p>
 <pre><code>&lt;h3&gt;Write Characteristic - Ran Lights&lt;/h3&gt;
 &lt;h4&gt;Control-Row&lt;/h4&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;F(0)&quot;&gt;ControlRow0 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;F(1)&quot;&gt;ControlRow1 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;F(2)&quot;&gt;ControlRow2 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;F(3)&quot;&gt;ControlRow3 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;F(4)&quot;&gt;ControlRow4 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeR0&quot; onclick=&quot;F(0)&quot;&gt;ControlRow0 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeR1&quot; onclick=&quot;F(1)&quot;&gt;ControlRow1 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeR2&quot; onclick=&quot;F(2)&quot;&gt;ControlRow2 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeR3&quot; onclick=&quot;F(3)&quot;&gt;ControlRow3 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeR4&quot; onclick=&quot;F(4)&quot;&gt;ControlRow4 LED&lt;/button&gt;
 &lt;h4&gt;Control-Col&lt;/h4&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;G(0)&quot;&gt;ControlCol0 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;G(1)&quot;&gt;ControlCol1 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;G(2)&quot;&gt;ControlCol2 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;G(3)&quot;&gt;ControlCol3 LED&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;G(4)&quot;&gt;ControlCol4 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeC0&quot; onclick=&quot;G(0)&quot;&gt;ControlCol0 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeC1&quot; onclick=&quot;G(1)&quot;&gt;ControlCol1 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeC2&quot; onclick=&quot;G(2)&quot;&gt;ControlCol2 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeC3&quot; onclick=&quot;G(3)&quot;&gt;ControlCol3 LED&lt;/button&gt;
+&lt;button id=&quot;btn_writeC4&quot; onclick=&quot;G(4)&quot;&gt;ControlCol4 LED&lt;/button&gt;
 </code></pre><p>2.添加数组和变量</p>
 <pre><code>     var led_array=[0,0,0,0,0];
      var led_Row=[0,0,0,0,0];
      var led_Col=[0,0,0,0,0];
      var i;
      var j;
-</code></pre><p>3.在这一过程中,大家只用添加4个函数，Row（）和Col（）函数分别是控制行列，而F（C），G（L）函数是将上面两个函数进行调用，当网页按钮按下时，调用F(C)，G(L)函数，这里的C和L是由于网页按下按钮的不同被赋于了不同的值，从而将值赋给函数进行if判断，数组led_Row和led_Col是指在进行行或列控制时，如果有相应的行按钮或列按钮按下则被赋于1小灯亮，若没有行按钮按下则是0灭，进而控制LED灯行列的亮灭。</p>
+</code></pre><p>3.在这一过程中,大家只用添加4个函数，<code>Row（）</code>和<code>Col（）</code>函数分别是控制行列，而<code>F（C）</code>，<code>G（L）</code>函数是将上面两个函数进行调用，当网页按钮按下时，调用<code>F(C)</code>，<code>G(L)</code>函数，这里的C和L是由于网页按下按钮的不同被赋于了不同的值，从而将值赋给函数进行if判断，数组<code>led_Row</code>和<code>led_Col</code>是指在进行行或列控制时，如果有相应的行按钮或列按钮按下则被赋于1小灯亮，若没有行按钮按下则是0灭，进而控制LED灯行列的亮灭。</p>
 <pre><code>function Row(){
            if(led_Row[i]==0){
                led_array[i]=31;
@@ -450,13 +450,30 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/06/23/控制BBC Microbit LED灯（六）/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//enen.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//enen.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                控制BBC Microbit 每个LED灯（六）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/06/21/MicroBit启用通知和指示（四）/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//mei1.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/recdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//svsb.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//svsb.jpg">
               </div>
               <span class="label">
               Next Post</span>
