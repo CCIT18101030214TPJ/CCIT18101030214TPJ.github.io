@@ -353,35 +353,73 @@
           <blockquote>
 <p>通过Web Bluetooth控制Microbit LED小灯的行列</p>
 </blockquote>
-<h3 id="Step1：修改代码"><a href="#Step1：修改代码" class="headerlink" title="Step1：修改代码"></a>Step1：修改代码</h3><p>1.在这一过程中我们修改的代码比较简单，只要将MicroBit蓝牙启用通知（四）中的函数<code>randomLEDs()</code>进行修改，这个函数的本身我们要在这给它赋值改为<code>randomLEDs(C)</code>，通过web按键的按下，将按键的值传到C，带入函数中，按下不同的键，亮灭不同的灯。灯的显示状态只需将LED的亮灭的随机值，赋于一个固定值即可。修改的代码如下：</p>
-<pre><code> var led_array=[0,0,0,0,0];
-            if(C==1)
+<h3 id="Step1：修改代码"><a href="#Step1：修改代码" class="headerlink" title="Step1：修改代码"></a>Step1：修改代码</h3><p>1.接着要修改HTML代码，在web添加按钮，总共有10个按钮：</p>
+<pre><code>&lt;h3&gt;Write Characteristic - Ran Lights&lt;/h3&gt;
+&lt;h4&gt;Control-Row&lt;/h4&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;F(0)&quot;&gt;ControlRow0 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;F(1)&quot;&gt;ControlRow1 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;F(2)&quot;&gt;ControlRow2 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;F(3)&quot;&gt;ControlRow3 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;F(4)&quot;&gt;ControlRow4 LED&lt;/button&gt;
+&lt;h4&gt;Control-Col&lt;/h4&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;G(0)&quot;&gt;ControlCol0 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;G(1)&quot;&gt;ControlCol1 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;G(2)&quot;&gt;ControlCol2 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;G(3)&quot;&gt;ControlCol3 LED&lt;/button&gt;
+&lt;button id=&quot;btn_write&quot; onclick=&quot;G(4)&quot;&gt;ControlCol4 LED&lt;/button&gt;
+</code></pre><p>2.添加数组和变量</p>
+<pre><code>     var led_array=[0,0,0,0,0];
+     var led_Row=[0,0,0,0,0];
+     var led_Col=[0,0,0,0,0];
+     var i;
+     var j;
+</code></pre><p>3.在这一过程中,大家只用添加4个函数，Row（）和Col（）函数分别是控制行列，而F（C），G（L）函数是将上面两个函数进行调用，当网页按钮按下时，调用F(C)，G(L)函数，这里的C和L是由于网页按下按钮的不同被赋于了不同的值，从而将值赋给函数进行if判断，数组led_Row和led_Col是指在进行行或列控制时，如果有相应的行按钮或列按钮按下则被赋于1小灯亮，若没有行按钮按下则是0灭，进而控制LED灯行列的亮灭。</p>
+<pre><code>function Row(){
+           if(led_Row[i]==0){
+               led_array[i]=31;
+               led_Row[i]=1;
+           }
+          else{
+              led_array[i]=0;
+              led_Row[i]=0;
+          }
+          randomLEDs();
+    }
+    function Col(){
+        if(led_Col[j]==0)
             {
-                 led_array[0] =    1&lt;&lt;i;
-                 led_array[1] = 1&lt;&lt;i;   
-                 led_array[2] = 1&lt;&lt;i;   
-                 led_array[3] = 1&lt;&lt;i;   
-                 led_array[4] = 1&lt;&lt;i;
-                 i++;
-                 if(i==5)i=0;
+                for(i=0;i&lt;5;i++)
+                led_array[i]=led_array[i]|(1&lt;&lt;j);
+                led_Col[j]=1;
             }
-            else if(C==0)
-            {
-                led_array[j] = 31;
-                j++;
-                if(j==5)j=0;
-            }
-</code></pre><p>2.在这里大家看到了变量<code>i，j</code>这是需要大家提前定义好的。</p>
-<pre><code> var i=0;
- var j=0;
-</code></pre><p>3.接着要修改HTML代码，在web添加按钮：</p>
-<pre><code>&lt;button id=&quot;btn_write&quot; onclick=&quot;randomLEDs(0)&quot;&gt;ControlRow0 LEDs&lt;/button&gt;
-&lt;button id=&quot;btn_write&quot; onclick=&quot;randomLEDs(1)&quot;&gt;ControlCol1 LEDs&lt;/button&gt;
+        else{
+            for(i=0;i&lt;5;i++)
+            led_array[i]=led_array[i]&amp;(~(1&lt;&lt;j));
+            led_Col[j]=0;
+        }
+
+            randomLEDs();
+
+    }
+    function F(C){
+       if(C==0){i=0;Row();}
+        else if(C==1){i=1;Row();}
+        else if(C==2){i=2;Row();}
+        else if(C==3){i=3;Row();}
+        else if(C==4){i=4;Row();}
+    }
+    function G(L){
+        if(L==0){j=0;Col();}
+        else if(L==1){j=1;Col();}
+        else if(L==2){j=2;Col();}
+        else if(L==3){j=3;Col();}
+        else if(L==4){j=4;Col();}
+    }
 </code></pre><h3 id="Step2：实验现象"><a href="#Step2：实验现象" class="headerlink" title="Step2：实验现象"></a>Step2：实验现象</h3><p>1.网页浏览器端的现象：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200623135946.png" alt></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//QQ截图20200623180317dgsr.png" alt></p>
 <p>2.开发板连接成功现象：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//8D6C3DB86C953106060CAA3642CC6.jpg" alt></p>
-<p>3.按下网页端<code>ControlRow0 LEDs和ControlCol1 LEDs</code>按钮，开发会在每行每列发生变化。</p>
+<p>3.按下网页端<code>ControlRow02 LEDs和ControlCol2 LEDs</code>按钮，开发会在每行每列发生变化。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//ncaicbi.jpg" alt></p>
 <p><img src="https://cdn.jsdelivr.net/gh/CCIT18101030214TPJ/resource//1592892297469.jpg" alt></p>
 
